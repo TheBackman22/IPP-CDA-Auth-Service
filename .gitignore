@@ -1,4 +1,5 @@
 HELP.md
+SERVICE_SPEC.md
 target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
