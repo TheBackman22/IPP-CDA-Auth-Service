@@ -1621,8 +1621,8 @@ services:
 ### Phase 1: Setup
 - [x] Create Spring Boot project with dependencies
 - [x] Configure application.yml for local development
-- [ ] Set up PostgreSQL locally or via Docker
-- [ ] Create database schema migration
+- [X] Set up PostgreSQL locally or via Docker
+- [X] Create database schema migration
 
 ### Phase 2: Core Implementation
 - [ ] Implement User entity and repository
