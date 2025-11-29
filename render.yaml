@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: auth-service
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: SPRING_PROFILES_ACTIVE
+        value: prod
+      - key: DATABASE_URL
+        fromDatabase:
+          name: ippcda-db
+          property: connectionString
+      - key: JWT_SECRET
+        generateValue: true
+      - key: INTERNAL_SERVICE_KEY
+        generateValue: true
+    healthCheckPath: /actuator/health
+    plan: free

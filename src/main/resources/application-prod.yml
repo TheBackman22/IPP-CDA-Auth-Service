@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    url: ${DATABASE_URL}
+    hikari:
+      maximum-pool-size: 2  # Free tier limit
+
+  jpa:
+    show-sql: false
+
+logging:
+  level:
+    com.ippcda.auth: INFO
+    org.springframework.security: INFO

@@ -1,0 +1,50 @@
+spring:
+  application:
+    name: auth-service
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/ippcda
+    username: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD:postgres}
+    hikari:
+      maximum-pool-size: ${DB_POOL_SIZE:5}
+      minimum-idle: 2
+      connection-timeout: 20000
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        default_schema: auth_schema
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    open-in-view: false
+
+server:
+  port: ${PORT:8081}
+
+# Custom JWT properties
+jwt:
+  secret: ${JWT_SECRET:your-256-bit-secret-key-here-min-32-chars}
+  access-token-expiration: ${JWT_ACCESS_EXPIRATION:3600000}    # 1 hour in ms
+  refresh-token-expiration: ${JWT_REFRESH_EXPIRATION:604800000} # 7 days in ms
+
+# Internal service key
+internal:
+  service-key: ${INTERNAL_SERVICE_KEY:dev-service-key}
+
+# Actuator
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+  endpoint:
+    health:
+      show-details: when_authorized
+
+# Logging
+logging:
+  level:
+    com.ippcda.auth: DEBUG
+    org.springframework.security: INFO
