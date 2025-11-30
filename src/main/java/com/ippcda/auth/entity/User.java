@@ -2,6 +2,7 @@ package com.ippcda.auth.entity;
 
 import java.time.OffsetDateTime;
 import java.util.UUID;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.annotations.CreationTimestamp;
@@ -19,10 +20,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@NoArgsConstructor
 @Getter
 @Setter
 @Entity
+@NoArgsConstructor
 @Table(name = "users", schema = "auth_schema")
 public class User {
     @Id
@@ -47,15 +48,15 @@ public class User {
     @Column(name = "active", nullable = false)
     private boolean active = true; 
 
-    @UpdateTimestamp
-    @Column(name = "updated_at", nullable = false)
-    private OffsetDateTime updatedAt;
-
     @CreationTimestamp
     @Column(name = "created_at", updatable = false, nullable = false)
     private OffsetDateTime createdAt;
 
+    @UpdateTimestamp
+    @Column(name = "updated_at", nullable = false)
+    private OffsetDateTime updatedAt;
+
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<RefreshToken> refreshTokens;
+    private List<RefreshToken> refreshTokens = new ArrayList<>();
     
 }

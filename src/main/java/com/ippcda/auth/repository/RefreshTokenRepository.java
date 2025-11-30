@@ -17,7 +17,5 @@ import com.ippcda.auth.entity.RefreshToken;
  */
 @Repository
 public interface RefreshTokenRepository extends JpaRepository<RefreshToken, UUID> {
-    Optional<RefreshToken> findByTokenHash(String token);
-    Optional<RefreshToken> findByUserId(UUID userId);
-    
+    Optional<RefreshToken> findByTokenHash(String token);    
 }
